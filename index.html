@@ -3,983 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>唐晨淇 - 个人互动介绍</title>
+    <title>唐晨淇 - 九年级个人简介</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        :root {
-            --primary: #6a5af9;
-            --secondary: #d66efd;
-            --accent: #4e73df;
-            --light: #f8f9fc;
-            --dark: #2c3e50;
-            --success: #36b37e;
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --text-color: #ffffff;
-        }
-        
-        .dark-theme {
-            --primary: #ff6b6b;
-            --secondary: #ffd166;
-            --accent: #06d6a0;
-            --card-bg: rgba(30, 30, 40, 0.7);
-            --text-color: #f0f0f0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--text-color);
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh;
             padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-            transition: background 0.5s ease;
-        }
-        
-        body.dark-theme {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        #three-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
-            width: 100%;
+            max-width: 1000px;
             margin: 0 auto;
-            position: relative;
-            z-index: 10;
-            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
         
         header {
+            background: linear-gradient(120deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
             text-align: center;
-            margin-bottom: 40px;
-            padding-top: 20px;
-            animation: fadeInDown 1s ease;
+            padding: 30px 20px;
+            position: relative;
         }
         
-        .theme-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 8px;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .theme-switcher:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(30deg);
-        }
-        
-        .theme-switcher i {
-            font-size: 1.5rem;
-            color: var(--text-color);
-        }
-        
-        .profile-container {
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 15px;
+            overflow: hidden;
+            background: #bbdefb;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            position: relative;
-        }
-        
-        .profile-card {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            perspective: 1000px;
-            margin-bottom: 25px;
-        }
-        
-        .profile-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-        
-        .profile-card:hover .profile-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .profile-front, .profile-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 50%;
-            display: flex;
             justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .profile-front {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
+        .avatar i {
             font-size: 70px;
-        }
-        
-        .profile-back {
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            color: white;
-            transform: rotateY(180deg);
-            flex-direction: column;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
-        .profile-back div {
-            margin: 5px 0;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            color: #0d47a1;
         }
         
         h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(90deg, #ffffff, #e0e0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
         }
         
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            border-radius: 2px;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         
-        .greeting {
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
-            margin: 0 auto 30px;
-            position: relative;
-            padding-bottom: 20px;
-            min-height: 40px;
-        }
-        
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            min-height: 200px;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        .card h2 {
-            color: var(--text-color);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .info-card {
             display: flex;
-            align-items: center;
-        }
-        
-        .card h2 i {
-            margin-right: 12px;
-            color: var(--secondary);
-            background: rgba(255, 255, 255, 0.1);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
-        
-        .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.5s ease;
-            opacity: 0;
-        }
-        
-        .card.active .card-content {
-            max-height: 1000px;
-            opacity: 1;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f5f9ff;
+            border-bottom: 1px solid #e3f2fd;
         }
         
         .info-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 18px 15px;
-            transition: all 0.3s ease;
-            cursor: default;
-            position: relative;
-            overflow: hidden;
+            flex-basis: 45%;
+            min-width: 250px;
+            margin: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .info-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
+        h2 {
+            color: #1565c0;
+            border-left: 5px solid #1565c0;
+            padding-left: 10px;
+            margin: 20px 0 15px;
         }
         
-        .info-item i {
-            font-size: 1.4rem;
-            color: var(--secondary);
-            margin-bottom: 12px;
-            display: block;
+        h3 {
+            color: #1e88e5;
+            margin: 15px 0 10px;
         }
         
-        .info-item strong {
-            display: block;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-            color: rgba(255, 255, 255, 0.7);
+        .content {
+            padding: 30px;
         }
         
-        .info-item p {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
         }
         
         .contact-item {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            flex-basis: 30%;
+            min-width: 200px;
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            transition: transform 0.3s;
             position: relative;
-            overflow: hidden;
         }
         
         .contact-item:hover {
-            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
+            background: #bbdefb;
         }
         
         .contact-item i {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            font-size: 24px;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .copy-btn {
+            background: #1565c0;
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 18px;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-details {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .contact-details div:first-child {
-            font-weight: 500;
-            color: var(--secondary);
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-        }
-        
-        .contact-details div:last-child {
-            color: var(--text-color);
-            font-size: 1.05rem;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .copy-indicator {
-            position: absolute;
-            top: -30px;
-            left: 0;
-            width: 100%;
-            background: var(--success);
-            color: white;
-            text-align: center;
-            padding: 5px;
-            font-size: 0.85rem;
-            transition: top 0.3s ease;
-        }
-        
-        .contact-item.copied .copy-indicator {
-            top: 0;
-        }
-        
-        .emails {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .email-item {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px 20px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            transition: background 0.3s;
         }
         
-        .email-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
+        .copy-btn:hover {
+            background: #0d47a1;
         }
         
-        .email-item i {
-            color: var(--secondary);
-            margin-right: 15px;
-            font-size: 1.4rem;
-            width: 40px;
-            text-align: center;
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .hobby {
+            flex-basis: 48%;
+            min-width: 250px;
+            background: #f5f9ff;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .hobby i {
+            font-size: 24px;
+            color: #1565c0;
+            margin-right: 10px;
         }
         
         footer {
             text-align: center;
-            padding: 25px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            margin-top: 10px;
+            padding: 20px;
+            background: #0d47a1;
+            color: white;
+            margin-top: 30px;
         }
         
-        .game-container {
+        .toast {
             position: fixed;
             bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .game-container:hover {
-            transform: scale(1.1);
-            background: rgba(var(--primary-rgb), 0.5);
-        }
-        
-        .game-container i {
-            font-size: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
-        }
-        
-        .game-panel {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 300px;
-            background: rgba(30, 30, 40, 0.9);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            z-index: 100;
-            transform: translateY(20px);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .game-panel.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        .game-panel h3 {
-            color: var(--text-color);
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .game-content {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
-            line-height: 1.6;
-            color: #00ff00;
-            height: 150px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-        }
-        
-        .game-controls {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .game-btn {
-            flex: 1;
-            padding: 8px;
-            border: none;
+            padding: 10px 20px;
             border-radius: 5px;
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        .game-btn:hover {
-            background: var(--secondary);
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
         @media (max-width: 768px) {
-            .card-container {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            h1 {
-                font-size: 2.4rem;
-            }
-            
-            .profile-card {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .greeting {
-                font-size: 1.1rem;
-            }
-            
-            .game-panel {
-                width: calc(100% - 40px);
-                left: 20px;
-                right: 20px;
-                bottom: 90px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            
-            .card {
-                padding: 25px 20px;
-            }
-            
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
+            .info-item, .hobby, .contact-item {
+                flex-basis: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 粒子背景 -->
-    <div id="particles-js"></div>
-    
-    <!-- 3D背景 -->
-    <div id="three-container"></div>
-    
     <div class="container">
-        <!-- 主题切换 -->
-        <div class="theme-switcher" id="themeSwitcher">
-            <i class="fas fa-moon"></i>
-        </div>
-        
         <header>
-            <div class="profile-container">
-                <!-- 3D翻转头像 -->
-                <div class="profile-card">
-                    <div class="profile-inner">
-                        <div class="profile-front">
-                            <span>唐</span>
-                        </div>
-                        <div class="profile-back">
-                            <div>唐晨淇</div>
-                            <div>生于2011年</div>
-                            <div>山东临沂</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h1>唐晨淇</h1>
-                <div class="greeting" id="greeting">正在加载问候语...</div>
+            <div class="avatar">
+                <i class="fas fa-user-graduate"></i>
             </div>
+            <h1>唐晨淇</h1>
+            <p class="subtitle">临沂市实验中学（北校区）九年级学生</p>
         </header>
         
-        <div class="card-container">
-            <!-- 基本信息卡片 -->
-            <div class="card active">
-                <h2><i class="fas fa-user-circle"></i> 基本信息</h2>
-                <div class="card-content">
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <i class="fas fa-venus-mars"></i>
-                            <strong>性别</strong>
-                            <p>男</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-users"></i>
-                            <strong>民族</strong>
-                            <p>汉族</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-birthday-cake"></i>
-                            <strong>出生日期</strong>
-                            <p>2011年4月10日</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <strong>出生地</strong>
-                            <p>山东省临沂市</p>
-                        </div>
-                    </div>
+        <div class="info-card">
+            <div class="info-item">
+                <h2>基本信息</h2>
+                <p><i class="fas fa-birthday-cake"></i> 年龄：14岁</p>
+                <p><i class="fas fa-map-marker-alt"></i> 所在地：山东省临沂市</p>
+                <p><i class="fas fa-school"></i> 学校：实验中学（北校区）</p>
+                <p><i class="fas fa-graduation-cap"></i> 年级：九年级</p>
+            </div>
+            
+            <div class="info-item">
+                <h2>性格特点</h2>
+                <p><i class="fas fa-lightbulb"></i> 积极乐观，善于思考</p>
+                <p><i class="fas fa-users"></i> 乐于助人，团结同学</p>
+                <p><i class="fas fa-book"></i> 热爱学习，喜欢探索新知识</p>
+                <p><i class="fas fa-rocket"></i> 备战中考，努力拼搏</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h2>关于我</h2>
+            <p>大家好，我是唐晨淇，现就读于临沂市实验中学北校区九年级。作为一名即将面临中考的初三学生，我正全力以赴地投入到学习中，同时也积极参加各种课外活动，保持身心健康和全面发展。</p>
+            
+            <h2>学习情况</h2>
+            <p>我在班级中学习成绩优异，尤其喜欢数学、物理和信息技术课程。作为九年级学生，我深知中考的重要性，因此制定了详细的学习计划，希望在明年的中考中取得优异成绩，进入理想的高中。</p>
+            
+            <h2>我的兴趣爱好</h2>
+            <div class="hobbies">
+                <div class="hobby">
+                    <h3><i class="fas fa-code"></i> 编程</h3>
+                    <p>喜欢学习编程知识，尝试编写小程序和网站设计，曾参加校级编程比赛。</p>
+                </div>
+                <div class="hobby">
+                    <h3><i class="fas fa-book"></i> 阅读</h3>
+                    <p>热爱阅读，特别是科幻小说和科普类书籍。</p>
+                </div>
+                <div class="hobby">
+                    <h3><i class="fas fa-music"></i> 音乐</h3>
+                    <p>喜欢听音乐和唱歌，尤其喜欢流行音乐，会弹奏一些吉他。</p>
+                </div>
+                <div class="hobby">
+                    <h3><i class="fas fa-palette"></i> 美术</h3>
+                    <p>喜欢绘画和设计，曾经获过奖，擅长写生。</p>
                 </div>
             </div>
             
-            <!-- 联系方式卡片 -->
-            <div class="card">
-                <h2><i class="fas fa-address-book"></i> 联系方式</h2>
-                <div class="card-content">
-                    <div class="contact-grid">
-                        <div class="contact-item" data-value="16653918277">
-                            <i class="fas fa-phone"></i>
-                            <div class="contact-details">
-                                <div>电话</div>
-                                <div>16653918277</div>
-                            </div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                        <div class="contact-item" data-value="tangchenqi13579">
-                            <i class="fab fa-weixin"></i>
-                            <div class="contact-details">
-                                <div>微信</div>
-                                <div>tangchenqi13579</div>
-                            </div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                        <div class="contact-item" data-value="1417926341">
-                            <i class="fab fa-qq"></i>
-                            <div class="contact-details">
-                                <div>QQ</div>
-                                <div>1417926341</div>
-                            </div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                        <div class="contact-item" data-value="16653918277">
-                            <i class="fas fa-comment-dots"></i>
-                            <div class="contact-details">
-                                <div>钉钉</div>
-                                <div>16653918277</div>
-                            </div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 电子邮箱卡片 -->
-            <div class="card">
-                <h2><i class="fas fa-envelope"></i> 电子邮箱</h2>
-                <div class="card-content">
-                    <div class="emails">
-                        <div class="email-item" data-value="dingdang_0401@qq.com">
-                            <i class="fas fa-envelope"></i>
-                            <div>dingdang_0401@qq.com</div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                        <div class="email-item" data-value="1417926341@qq.com">
-                            <i class="fas fa-envelope"></i>
-                            <div>1417926341@qq.com</div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                        <div class="email-item" data-value="dingdang0401@dingtalk.com">
-                            <i class="fas fa-envelope"></i>
-                            <div>dingdang0401@dingtalk.com</div>
-                            <div class="copy-indicator">已复制!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>联系方式</h2>
+            <p>如果您想与我交流学习心得或成为朋友，可以通过以下方式联系我：</p>
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>电话</h3>
+                    <p class="contact-info">16653918277</p>
+                    <button class="copy-btn" data-clipboard-text="16653918277">复制号码</button>
+                </li>
+                <li class="contact-item">
+                    <i class="fab fa-weixin"></i>
+                    <h3>微信</h3>
+                    <p class="contact-info">tangchenqi13579</p>
+                    <button class="copy-btn" data-clipboard-text="tangchenqi13579">复制微信号</button>
+                </li>
+                <li class="contact-item">
+                    <i class="fab fa-qq"></i>
+                    <h3>QQ</h3>
+                    <p class="contact-info">1417926341</p>
+                    <button class="copy-btn" data-clipboard-text="1417926341">复制QQ号</button>
+                </li>
+                <li class="contact-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <h3>钉钉</h3>
+                    <p class="contact-info">16653918277</p>
+                    <button class="copy-btn" data-clipboard-text="16653918277">复制钉钉号</button>
+                </li>
+                <li class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>邮箱</h3>
+                    <p class="contact-info">dingdang_0401@qq.com</p>
+                    <button class="copy-btn" data-clipboard-text="dingdang_0401@qq.com">复制邮箱</button>
+                </li>
+            </ul>
         </div>
         
         <footer>
-            <p>© 2023 唐晨淇个人介绍 | 本页面仅用于个人展示</p>
+            <p>© 2023 唐晨淇的个人简介 | 临沂市实验中学（北校区）九年级</p>
         </footer>
     </div>
-    
-    <!-- 游戏彩蛋 -->
-    <div class="game-container" id="gameIcon">
-        <i class="fas fa-gamepad"></i>
-    </div>
-    
-    <div class="game-panel" id="gamePanel">
-        <h3>趣味小游戏</h3>
-        <div class="game-content" id="gameContent">
-            > 欢迎来到唐晨淇的个人空间！<br><br>
-            > 按下按钮开始趣味游戏...<br><br>
-            > 猜猜我的幸运数字是多少？<br>
-        </div>
-        <div class="game-controls">
-            <button class="game-btn" id="startGame">开始游戏</button>
-            <button class="game-btn" id="closeGame">关闭</button>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <div class="toast" id="copyToast">联系方式已复制到剪贴板！</div>
+
     <script>
-        // 粒子背景配置
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#ffffff" },
-                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-                opacity: { value: 0.1, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.05, width: 1 },
-                move: { enable: true, speed: 1, direction: "none", random: true }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { 
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" }
-                }
-            }
-        });
-        
-        // 3D背景初始化
-        function initThreeBackground() {
-            const container = document.getElementById('three-container');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // 创建几何体
-            const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-            const material = new THREE.MeshBasicMaterial({ 
-                color: 0x6a5af9, 
-                wireframe: true,
-                transparent: true,
-                opacity: 0.2
-            });
-            const torus = new THREE.Mesh(geometry, material);
-            scene.add(torus);
-            
-            camera.position.z = 25;
-            
-            // 动画循环
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                torus.rotation.x += 0.005;
-                torus.rotation.y += 0.005;
-                
-                renderer.render(scene, camera);
-            }
-            
-            animate();
-            
-            // 响应窗口大小变化
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
-        
         // 复制功能实现
-        function setupCopyFunctionality() {
-            const contactItems = document.querySelectorAll('.contact-item, .email-item');
-            
-            contactItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    
-                    // 复制到剪贴板
-                    navigator.clipboard.writeText(value).then(() => {
-                        // 显示复制成功提示
-                        this.classList.add('copied');
-                        
-                        // 3秒后移除提示
-                        setTimeout(() => {
-                            this.classList.remove('copied');
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('复制失败:', err);
-                    });
-                });
-            });
-        }
-        
-        // 卡片交互功能
-        function setupCardInteractions() {
-            const cards = document.querySelectorAll('.card');
-            
-            cards.forEach(card => {
-                card.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                });
-            });
-        }
-        
-        // 主题切换功能
-        function setupThemeSwitcher() {
-            const themeSwitcher = document.getElementById('themeSwitcher');
-            const body = document.body;
-            const icon = themeSwitcher.querySelector('i');
-            
-            themeSwitcher.addEventListener('click', function() {
-                body.classList.toggle('dark-theme');
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const textToCopy = this.getAttribute('data-clipboard-text');
+                copyToClipboard(textToCopy);
                 
-                if (body.classList.contains('dark-theme')) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
-            });
-        }
-        
-        // 动态问候语
-        function updateGreeting() {
-            const greetingElement = document.getElementById('greeting');
-            const hour = new Date().getHours();
-            let greeting = '';
-            
-            if (hour < 6) {
-                greeting = '夜深了，注意休息哦！🌙';
-            } else if (hour < 12) {
-                greeting = '早上好！今天也是充满活力的一天！☀️';
-            } else if (hour < 18) {
-                greeting = '下午好！享受这美好时光吧！🌤️';
-            } else {
-                greeting = '晚上好！放松一下，享受夜晚！🌙';
-            }
-            
-            greetingElement.textContent = greeting;
-        }
-        
-        // 游戏彩蛋功能
-        function setupGameEasterEgg() {
-            const gameIcon = document.getElementById('gameIcon');
-            const gamePanel = document.getElementById('gamePanel');
-            const startBtn = document.getElementById('startGame');
-            const closeBtn = document.getElementById('closeGame');
-            const gameContent = document.getElementById('gameContent');
-            
-            gameIcon.addEventListener('click', function() {
-                gamePanel.classList.toggle('active');
-            });
-            
-            closeBtn.addEventListener('click', function() {
-                gamePanel.classList.remove('active');
-            });
-            
-            startBtn.addEventListener('click', function() {
-                gameContent.innerHTML = '> 游戏开始！<br>> 猜一个1-10之间的数字...';
+                // 显示提示
+                const toast = document.getElementById('copyToast');
+                toast.textContent = `${textToCopy} 已复制到剪贴板！`;
+                toast.style.opacity = 1;
                 
-                const luckyNumber = Math.floor(Math.random() * 10) + 1;
-                let attempts = 3;
-                
-                const guess = () => {
-                    if (attempts <= 0) {
-                        gameContent.innerHTML += `<br>> 游戏结束！正确答案是: ${luckyNumber}`;
-                        return;
-                    }
-                    
-                    const userGuess = prompt(`还剩 ${attempts} 次机会，请输入1-10之间的数字：`);
-                    
-                    if (userGuess === null) return;
-                    
-                    const num = parseInt(userGuess);
-                    
-                    if (isNaN(num) {
-                        gameContent.innerHTML += `<br>> 请输入有效数字！`;
-                        guess();
-                    } else if (num < 1 || num > 10) {
-                        gameContent.innerHTML += `<br>> 请输入1-10之间的数字！`;
-                        guess();
-                    } else {
-                        attempts--;
-                        
-                        if (num === luckyNumber) {
-                            gameContent.innerHTML += `<br>> 恭喜你猜对了！我的幸运数字是 ${luckyNumber}`;
-                        } else if (num < luckyNumber) {
-                            gameContent.innerHTML += `<br>> 太小了！还剩 ${attempts} 次机会`;
-                            if (attempts > 0) guess();
-                        } else {
-                            gameContent.innerHTML += `<br>> 太大了！还剩 ${attempts} 次机会`;
-                            if (attempts > 0) guess();
-                        }
-                    }
-                };
-                
-                guess();
+                // 2秒后隐藏提示
+                setTimeout(() => {
+                    toast.style.opacity = 0;
+                }, 2000);
             });
-        }
-        
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化3D背景
-            initThreeBackground();
-            
-            // 设置复制功能
-            setupCopyFunctionality();
-            
-            // 设置卡片交互
-            setupCardInteractions();
-            
-            // 设置主题切换
-            setupThemeSwitcher();
-            
-            // 设置问候语
-            updateGreeting();
-            
-            // 设置游戏彩蛋
-            setupGameEasterEgg();
-            
-            // 卡片加载动画
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.15}s`;
-                card.style.animation = 'fadeInUp 0.6s ease forwards';
-                card.style.opacity = '0';
-            });
-            
-            // 添加动画关键帧
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
         });
+        
+        // 复制到剪贴板的函数
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                // 使用新的Clipboard API（更安全）
+                navigator.clipboard.writeText(text);
+            } else {
+                // 使用传统的document.execCommand方法作为备选
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'absolute';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (error) {
+                    console.error('无法复制文本: ', error);
+                }
+                document.body.removeChild(textArea);
+            }
+        }
     </script>
 </body>
 </html>
